@@ -9,6 +9,7 @@ public enum Suit {
     CLUBS("♣")
     ;
 
+    @Deprecated // should no longer be used once we're done
     static final List<String> SUITS = List.of("♠", "♦", "♥", "♣");
     private final String symbol;
 
