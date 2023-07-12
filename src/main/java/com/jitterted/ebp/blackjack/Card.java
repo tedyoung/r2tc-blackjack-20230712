@@ -2,17 +2,13 @@ package com.jitterted.ebp.blackjack;
 
 import org.fusesource.jansi.Ansi;
 
+import java.util.Objects;
+
 import static org.fusesource.jansi.Ansi.ansi;
 
 public class Card {
     private final Suit suit;
     private final String rank;
-
-    @Deprecated // use Card(Suit suit, String rank)
-    public Card(String symbol, String rank) {
-        this.suit = Suit.from(symbol);
-        this.rank = rank;
-    }
 
     public Card(Suit suit, String rank) {
         this.suit = suit;
@@ -39,7 +35,7 @@ public class Card {
         lines[5] = String.format("│       %s%s│", rank.equals("10") ? "" : " ", rank);
         lines[6] = "└─────────┘";
 
-        Ansi.Color cardColor = "♥♦".contains(suit.symbol()) ? Ansi.Color.RED : Ansi.Color.BLACK;
+        Ansi.Color cardColor = suit.isRed() ? Ansi.Color.RED : Ansi.Color.BLACK;
         return ansi()
                 .fg(cardColor).toString()
                 + String.join(ansi().cursorDown(1)
@@ -51,25 +47,24 @@ public class Card {
     public String toString() {
         return "Card {" +
                 "suit=" + suit +
-                ", rank=" + rank +
+                ", rank='" + rank + '\'' +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Card card = (Card) o;
-
-        if (!suit.equals(card.suit)) return false;
-        return rank.equals(card.rank);
+        return suit == card.suit && Objects.equals(rank, card.rank);
     }
 
     @Override
     public int hashCode() {
-        int result = suit.hashCode();
-        result = 31 * result + rank.hashCode();
-        return result;
+        return Objects.hash(suit, rank);
     }
 }

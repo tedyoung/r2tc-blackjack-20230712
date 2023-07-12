@@ -1,33 +1,25 @@
 package com.jitterted.ebp.blackjack;
 
-import java.util.List;
-
 public enum Suit {
-    SPADES("♠"),
-    DIAMONDS("♦"),
-    HEARTS("♥"),
-    CLUBS("♣")
+    SPADES("♠", false),
+    DIAMONDS("♦", true),
+    HEARTS("♥", true),
+    CLUBS("♣", false)
     ;
 
-    @Deprecated // should no longer be used once we're done
-    static final List<String> SUITS = List.of("♠", "♦", "♥", "♣");
     private final String symbol;
+    private final boolean isRed;
 
-    Suit(String symbol) {
+    Suit(String symbol, boolean isRed) {
         this.symbol = symbol;
-    }
-
-    @Deprecated // this is temporary/scaffolding
-    public static Suit from(String symbol) {
-        for (Suit suit : values()) {
-            if (suit.symbol.equals(symbol)) {
-                return suit;
-            }
-        }
-        return null;
+        this.isRed = isRed;
     }
 
     public String symbol() {
         return symbol;
+    }
+
+    boolean isRed() {
+        return isRed;
     }
 }
