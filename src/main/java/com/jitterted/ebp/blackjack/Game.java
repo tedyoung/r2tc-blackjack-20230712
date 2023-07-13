@@ -91,11 +91,6 @@ public class Game {
             System.out.println("Dealer went BUST, Player wins! Yay for you!! 💵");
         } else if (playerHand.beats(dealerHand)) { // playerHand.beats(dealerHand)
             System.out.println("You beat the Dealer! 💵");
-            // compareTo -> sort
-            // equals -> technical
-            // draw
-            // tie
-            // push
         } else if (dealerHand.pushes(playerHand)) { // dealerHand.pushes(playerHand)
             System.out.println("Push: You tie with the Dealer. 💸");
         } else {
@@ -216,6 +211,10 @@ public class Game {
     }
 
     public void playerWins() {
+        playerBalance += playerBetAmount * 2;
+    }
+
+    public void playerLoses() {
 
     }
 }
