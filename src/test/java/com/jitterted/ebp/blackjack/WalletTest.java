@@ -24,4 +24,11 @@ public class WalletTest {
                 .isFalse();
     }
 
+    @Test
+    void newWalletBalanceIsZero() {
+        Wallet wallet = new Wallet();
+
+        assertThat(wallet.balance())
+                .isZero();
+    }
 }
