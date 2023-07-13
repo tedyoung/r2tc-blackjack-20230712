@@ -13,6 +13,7 @@ public class Game {
 
     private final Hand playerHand = new Hand();
     private final Hand dealerHand = new Hand();
+    private int playerBalance = 0;
 
     public static void main(String[] args) {
         installAnsiDisplay();
@@ -199,4 +200,7 @@ public class Game {
                         .a("└─────────┘"));
     }
 
+    public int playerBalance() {
+        return playerBalance;
+    }
 }
