@@ -11,4 +11,7 @@ public class Hand {
         return cards;
     }
 
+    void drawCardFrom(Deck deck) {
+        getCards().add(deck.draw());
+    }
 }
