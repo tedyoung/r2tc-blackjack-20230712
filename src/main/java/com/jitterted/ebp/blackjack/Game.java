@@ -87,14 +87,19 @@ public class Game {
     private void displayOutcome(boolean playerBusted) {
         if (playerBusted) {
             System.out.println("You Busted, so you lose.  💸");
+            playerLoses();
         } else if (dealerHand.isBusted()) {
             System.out.println("Dealer went BUST, Player wins! Yay for you!! 💵");
+            playerWins();
         } else if (playerHand.beats(dealerHand)) { // playerHand.beats(dealerHand)
             System.out.println("You beat the Dealer! 💵");
+            playerWins();
         } else if (dealerHand.pushes(playerHand)) { // dealerHand.pushes(playerHand)
             System.out.println("Push: You tie with the Dealer. 💸");
+            playerPushes();
         } else {
             System.out.println("You lost to the Dealer. 💸");
+            playerLoses();
         }
     }
 
@@ -210,16 +215,17 @@ public class Game {
         playerBetAmount = betAmount;
     }
 
+
     public void playerWins() {
         playerBalance += playerBetAmount * 2;
     }
 
     public void playerLoses() {
-
+        playerBalance += playerBetAmount * 0;
     }
 
     public void playerPushes() {
-        playerBalance += playerBetAmount;
+        playerBalance += playerBetAmount * 1;
     }
 
     public void playerWinsBlackjack() {
