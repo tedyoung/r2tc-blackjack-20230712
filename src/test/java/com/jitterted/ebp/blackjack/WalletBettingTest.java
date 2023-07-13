@@ -37,6 +37,13 @@ public class WalletBettingTest {
                 .isTrue();
     }
 
+    // if ( wallet.canBet(betAmount) ) {
+    //   wallet.bet(betAmount);
+    // } else {
+    //  tell user not enough balance
+    // }
+
+
     @Test
     void betMoreThanBalanceThrowsException() {
         Wallet wallet = createWalletWithInitialBalanceOf(17);
