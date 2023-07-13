@@ -200,11 +200,16 @@ public class Game {
                         .a("└─────────┘"));
     }
 
+
     public int playerBalance() {
         return playerBalance;
     }
 
     public void playerDeposits(int depositAmount) {
         playerBalance += depositAmount;
+    }
+
+    public void playerBets(int betAmount) {
+        playerBalance -= betAmount;
     }
 }
