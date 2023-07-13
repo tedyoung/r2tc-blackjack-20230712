@@ -14,14 +14,14 @@ public class WalletTest {
                 .isTrue();
     }
 
-//    @Test
-//    void addMoneyToNewWalletIsNotEmpty() {
-//        Wallet wallet = new Wallet();
-//
-//        wallet.addMoney(1);
-//
-//        assertThat(wallet.isEmpty())
-//                .isFalse();
-//    }
+    @Test
+    void addMoneyToNewWalletIsNotEmpty() {
+        Wallet wallet = new Wallet();
+
+        wallet.addMoney(1);
+
+        assertThat(wallet.isEmpty())
+                .isFalse();
+    }
 
 }
