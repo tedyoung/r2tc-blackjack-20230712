@@ -12,22 +12,23 @@ public class HandValueAceTest {
 
     @Test
     public void handWithOneAceTwoCardsIsValuedAt11() throws Exception {
-        Game game = new Game();
         List<Card> cards = List.of(new Card(IRRELEVANT_SUIT, "A"),
                                    new Card(IRRELEVANT_SUIT, "5"));
+        Hand hand = new Hand(cards);
 
-        assertThat(game.handValueOf(cards))
+        assertThat(hand.value())
                 .isEqualTo(11 + 5);
     }
 
     @Test
     public void handWithOneAceAndOtherCardsEqualTo11IsValuedAt1() throws Exception {
-        Game game = new Game();
         List<Card> cards = List.of(new Card(IRRELEVANT_SUIT, "A"),
                                    new Card(IRRELEVANT_SUIT, "8"),
                                    new Card(IRRELEVANT_SUIT, "3"));
 
-        assertThat(game.handValueOf(cards))
+        Hand hand = new Hand(cards);
+
+        assertThat(hand.value())
                 .isEqualTo(1 + 8 + 3);
     }
 
