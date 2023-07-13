@@ -8,8 +8,7 @@ public class WalletBettingTest {
 
     @Test
     void walletWithBalance12WhenBet8ThenBalanceIs4() {
-        Wallet wallet = new Wallet();
-        wallet.addMoney(12);
+        Wallet wallet = createWalletWithInitialBalanceOf(12);
 
         wallet.bet(8);
 
@@ -19,8 +18,7 @@ public class WalletBettingTest {
 
     @Test
     void walletWithBalance27Bet7And9ThenBalanceIs11() {
-        Wallet wallet = new Wallet();
-        wallet.addMoney(27);
+        Wallet wallet = createWalletWithInitialBalanceOf(27);
 
         wallet.bet(7);
         wallet.bet(9);
@@ -29,4 +27,19 @@ public class WalletBettingTest {
                 .isEqualTo(27 - 7 - 9);
     }
 
+    @Test
+    void betFullBalanceThenWalletIsEmpty() {
+        Wallet wallet = createWalletWithInitialBalanceOf(73);
+
+        wallet.bet(73);
+
+        assertThat(wallet.isEmpty())
+                .isTrue();
+    }
+
+    private Wallet createWalletWithInitialBalanceOf(int initialAmount) {
+        Wallet wallet = new Wallet();
+        wallet.addMoney(initialAmount);
+        return wallet;
+    }
 }
